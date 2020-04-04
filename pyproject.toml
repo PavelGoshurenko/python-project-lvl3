@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "pavelgoshurenko-page-loader"
+version = "0.1.0"
+description = ""
+authors = ["Pavel Goshurenko <goshurenkopl@gmail.com>"]
+
+
+packages = [
+  { include = "page_loader" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+requests = "^2.23.0"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.7.9"
+pytest = "^5.4.1"
+pylint = "^2.4.4"
+
+[tool.poetry.scripts]
+page-loader = "page_loader.scripts.page_loader:main"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
