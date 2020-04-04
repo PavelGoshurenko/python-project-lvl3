@@ -17,6 +17,7 @@ requests = "^2.23.0"
 flake8 = "^3.7.9"
 pytest = "^5.4.1"
 pylint = "^2.4.4"
+pytest-cov = "^2.8.1"
 
 [tool.poetry.scripts]
 page-loader = "page_loader.scripts.page_loader:main"
