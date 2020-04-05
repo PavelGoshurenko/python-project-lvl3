@@ -7,4 +7,9 @@ If you are interested, you can install it using the command:
 pip install -i https://test.pypi.org/simple/ pavelgoshurenko-page-loader --extra-index-url https://pypi.org/simple
 
 
+<a href="https://asciinema.org/a/qp7lMhMVJ09QlCseTXMHyEBVh" target="_blank"><img src="https://asciinema.org/a/qp7lMhMVJ09QlCseTXMHyEBVh.svg" /></a>
+
+<a href="https://asciinema.org/a/lHPamok7mhQI6hmnZltrqaPSo" target="_blank"><img src="https://asciinema.org/a/lHPamok7mhQI6hmnZltrqaPSo.svg" /></a>
+
+
 
