@@ -1,0 +1,42 @@
+INFO:root:Informational message
+ERROR:root:An error has happened!
+INFO:root:Informational message
+ERROR:root:An error has happened!
+INFO:root:Informational message
+ERROR:root:An error has happened!
+INFO:root:Informational message
+ERROR:root:An error has happened!
+INFO:root:Save https://www.python.org//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js
+as /home/fisher/tests/www-python-org_files/-ajax-googleapis-com-ajax-libs-jquery-1-8-2-jquery-min.js
+INFO:root:Save https://www.python.org/static/stylesheets/style.67f4b30f7483.css
+as /home/fisher/tests/www-python-org_files/static-stylesheets-style-67f4b30f7483.css
+INFO:root:Save https://www.python.org/static/stylesheets/mq.3ae8e02ece5b.css
+as /home/fisher/tests/www-python-org_files/static-stylesheets-mq-3ae8e02ece5b.css
+INFO:root:Save https://www.python.org/static/favicon.ico
+as /home/fisher/tests/www-python-org_files/static-favicon.ico
+INFO:root:Save https://www.python.org/static/apple-touch-icon-144x144-precomposed.png
+as /home/fisher/tests/www-python-org_files/static-apple-touch-icon-144x144-precomposed.png
+INFO:root:Save https://www.python.org/static/apple-touch-icon-114x114-precomposed.png
+as /home/fisher/tests/www-python-org_files/static-apple-touch-icon-114x114-precomposed.png
+INFO:root:Save https://www.python.org/static/apple-touch-icon-72x72-precomposed.png
+as /home/fisher/tests/www-python-org_files/static-apple-touch-icon-72x72-precomposed.png
+INFO:root:Save https://www.python.org/static/apple-touch-icon-precomposed.png
+as /home/fisher/tests/www-python-org_files/static-apple-touch-icon-precomposed.png
+INFO:root:Save https://www.python.org/static/apple-touch-icon-precomposed.png
+as /home/fisher/tests/www-python-org_files/static-apple-touch-icon-precomposed.png
+INFO:root:Save https://www.python.org/static/humans.txt
+as /home/fisher/tests/www-python-org_files/static-humans.txt
+INFO:root:Save https://www.python.org/static/js/libs/modernizr.js
+as /home/fisher/tests/www-python-org_files/static-js-libs-modernizr.js
+INFO:root:Save https://www.python.org//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js
+as /home/fisher/tests/www-python-org_files/-ajax-googleapis-com-ajax-libs-jquery-1-8-2-jquery-min.js
+INFO:root:Save https://www.python.org/static/js/libs/masonry.pkgd.min.js
+as /home/fisher/tests/www-python-org_files/static-js-libs-masonry-pkgd-min.js
+INFO:root:Save https://www.python.org/static/js/libs/html-includes.js
+as /home/fisher/tests/www-python-org_files/static-js-libs-html-includes.js
+INFO:root:Save https://www.python.org/static/js/main-min.037d9037f112.js
+as /home/fisher/tests/www-python-org_files/static-js-main-min-037d9037f112.js
+INFO:root:Save https://www.python.org/static/img/python-logo.png
+as /home/fisher/tests/www-python-org_files/static-img-python-logo.png
+INFO:root:Save https://www.python.org
+as /home/fisher/tests/www-python-org.html

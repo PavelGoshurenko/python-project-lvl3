@@ -3,6 +3,7 @@ from urllib.parse import urlparse
 import re
 import os
 from bs4 import BeautifulSoup
+import logging
 
 (LINK, SCRIPT, IMG) = ('link', 'script', 'img')
 (SRC, HREF) = ('src', 'href')
@@ -39,12 +40,12 @@ def page_loader(url, path):
                 (resourse_url_root, resourse_url_ext) = os.path.splitext(resourse_url[1:]) # noqa E501
                 resourse_file_name = make_name(resourse_url_root, resourse_url_ext) # noqa E501
                 full_resourse_name = os.path.join(full_dir_name, resourse_file_name) # noqa E501
-                print("Save {}\nas {}".format(resourse_full_url, full_resourse_name)) # noqa E501
+                logging.info("Save {}\nas {}".format(resourse_full_url, full_resourse_name)) # noqa E501
                 with open(full_resourse_name, 'wb') as file:
                     file.write(r1.content)
                 # change url to local path
                 tag[attribute] = os.path.join(dir_name, resourse_file_name)
     new_text = soup.prettify()
-    print("Save {}\nas {}".format(url, full_file_name))
+    logging.info("Save {}\nas {}".format(url, full_file_name))
     with open(full_file_name, "w") as output_file:
         output_file.write(new_text)
