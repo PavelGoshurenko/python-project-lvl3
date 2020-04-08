@@ -4,6 +4,12 @@ import re
 import os
 from bs4 import BeautifulSoup
 import logging
+import traceback
+
+
+class KnownError(Exception):
+    pass
+
 
 (LINK, SCRIPT, IMG) = ('link', 'script', 'img')
 (SRC, HREF) = ('src', 'href')
@@ -24,9 +30,19 @@ def page_loader(url, path):
     dir_name = make_name(address, '_files')
     full_file_name = os.path.join(path, file_name)
     full_dir_name = os.path.join(path, dir_name)
-    os.mkdir(full_dir_name)
+    try:
+        os.mkdir(full_dir_name)
+    except IOError as error:
+        logging.debug(traceback.format_exc(10))
+        logging.error("Can't create directory {}".format(full_dir_name))
+        raise KnownError() from error
     # get main file content
-    r = requests.get(url)
+    try:
+        r = requests.get(url)
+        r.raise_for_status()
+    except requests.RequestException as error:
+        logging.error(error)
+        raise requests.RequestException(error)
     file_content = r.text
     # download resourses
     soup = BeautifulSoup(file_content, 'html.parser')
@@ -47,5 +63,9 @@ def page_loader(url, path):
                 tag[attribute] = os.path.join(dir_name, resourse_file_name)
     new_text = soup.prettify()
     logging.info("Save {}\nas {}".format(url, full_file_name))
-    with open(full_file_name, "w") as output_file:
-        output_file.write(new_text)
+    try:
+        with open(full_file_name, "w") as output_file:
+            output_file.write(new_text)
+    except IOError:
+        logging.error("Can't create file {}".format(full_file_name))
+        raise IOError("Can't create file {}".format(full_file_name))
