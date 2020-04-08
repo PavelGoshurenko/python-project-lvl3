@@ -5,9 +5,10 @@ import os
 
 
  
+ # A static html file that has not changed since 1993
 CORRECT_FILE = './tests/fixtures/output.html'
-TEST_URL = 'https://www.python.org'
-TEMP_FILE_NAME = 'www-python-org.html'
+TEST_URL = 'http://www.tim.org/thesinger.html'
+TEMP_FILE_NAME = 'www-tim-org-thesinger-html.html'
 
 
 def test():
