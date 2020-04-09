@@ -1,8 +1,9 @@
 [tool.poetry]
 name = "pavelgoshurenko-page-loader"
-version = "0.3.0"
-description = ""
+version = "0.4.0"
+description = "Download web pages and save them locally"
 authors = ["Pavel Goshurenko <goshurenkopl@gmail.com>"]
+repository = "https://github.com/PavelGoshurenko/python-project-lvl3"
 
 
 packages = [
@@ -13,6 +14,7 @@ packages = [
 python = "^3.7"
 requests = "^2.23.0"
 beautifulsoup4 = "^4.8.2"
+progress = "^1.5"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.7.9"

@@ -1,7 +1,10 @@
 import logging
 
 
-logging.basicConfig(filename="page_loader.log", level=logging.INFO)
-logging.debug("This is a debug message")
-logging.info("Informational message")
-logging.error("An error has happened!")
+def log_config(level):
+    logging.basicConfig(
+        format='%(asctime)s - %(message)s',
+        datefmt='%d-%b-%y %H:%M:%S'
+        )
+    log = logging.getLogger()
+    log.setLevel(level)
