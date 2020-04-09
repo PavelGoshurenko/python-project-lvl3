@@ -1,6 +1,7 @@
 dist/
 .vscode
 .coverage
+coverage.xml
 .venv/
 *.pyc
 *.egg-info

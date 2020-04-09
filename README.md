@@ -8,15 +8,20 @@ If you are interested, you can install it using the command:
 
 pip install -i https://test.pypi.org/simple/ pavelgoshurenko-page-loader --extra-index-url https://pypi.org/simple
 
+
 Installing and downloading only the page (old version):
+
 <a href="https://asciinema.org/a/qp7lMhMVJ09QlCseTXMHyEBVh" target="_blank"><img src="https://asciinema.org/a/qp7lMhMVJ09QlCseTXMHyEBVh.svg" /></a>
 
 Installation and full page download (new version):
+
 <a href="https://asciinema.org/a/lHPamok7mhQI6hmnZltrqaPSo" target="_blank"><img src="https://asciinema.org/a/lHPamok7mhQI6hmnZltrqaPSo.svg" /></a>
 
 Error processing:
+
 <a href="https://asciinema.org/a/bo4a74v3NirxwKSZ9S2VIfgZd" target="_blank"><img src="https://asciinema.org/a/bo4a74v3NirxwKSZ9S2VIfgZd.svg" /></a>
 
 Working with a beautiful progress bar:
+
 <a href="https://asciinema.org/a/rLa5TyQ578o7835BYKhziQWwS" target="_blank"><img src="https://asciinema.org/a/rLa5TyQ578o7835BYKhziQWwS.svg" /></a>
 
