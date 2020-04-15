@@ -1,7 +1,11 @@
 import logging
 
 
-def log_config(level):
+class KnownError(Exception):
+    pass
+
+
+def configure(level):
     logging.basicConfig(
         format='%(asctime)s - %(message)s',
         datefmt='%d-%b-%y %H:%M:%S'

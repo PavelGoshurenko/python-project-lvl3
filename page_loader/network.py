@@ -1,8 +1,9 @@
-import requests
 import logging
 import traceback
-from page_loader.known_error import KnownError
 
+import requests
+
+from page_loader.logging import KnownError
 
 (OBLIGATORY, OPTIONAL) = ('obligatory', 'optional')
 
@@ -20,4 +21,5 @@ def get_content(url, priority):
             # Some resources may not be available.
             # Let's give the program opportunity to finish.
             logging.debug("Can't get {}".format(url))
+            return
     return r.content

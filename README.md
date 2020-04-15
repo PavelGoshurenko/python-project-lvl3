@@ -6,8 +6,9 @@ This console program allows you to download web pages and save them locally.
 
 If you are interested, you can install it using the command:
 
-pip install -i https://test.pypi.org/simple/ pavelgoshurenko-page-loader --extra-index-url https://pypi.org/simple
 
+
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple pavelgoshurenko-page-loader
 
 Installing and downloading only the page (old version):
 

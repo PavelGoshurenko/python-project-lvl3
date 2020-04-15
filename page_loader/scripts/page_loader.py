@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 import argparse
-from page_loader.page_loader import page_loader
-from page_loader.logger import log_config
 import sys
-from page_loader.known_error import KnownError
+
+from page_loader import logging
+from page_loader.logging import KnownError
+from page_loader.page_loader import load_page
 
 
 def main():
@@ -18,9 +19,9 @@ def main():
         choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'],
         default='WARNING')
     args = parser.parse_args()
-    log_config(args.log_level)
+    logging.configure(args.log_level)
     try:
-        page_loader(args.url, args.output)
+        load_page(args.url, args.output)
     except KnownError:
         sys.exit(1)
 
