@@ -5,7 +5,7 @@ import requests
 
 from page_loader.logging import KnownError
 
-(OBLIGATORY, OPTIONAL) = ('obligatory', 'optional')
+OBLIGATORY, OPTIONAL = 'obligatory', 'optional'
 
 
 def get_content(url, priority):
