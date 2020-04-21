@@ -6,7 +6,7 @@ import requests_mock
 from page_loader import logging
 from page_loader.logging import KnownError
 from page_loader.network import OBLIGATORY, OPTIONAL, get_content
-from page_loader.page_loader import load_page, load_resources
+from page_loader.page_loader import load_page, download_resources
 
 # A static html file that has not changed since 1997
 TEST_URL = 'http://endoftheinternet.com/'
@@ -65,7 +65,7 @@ def test_load_resource():
     logging.configure('DEBUG')
     with tempfile.TemporaryDirectory() as temp_dir:
         full_path = os.path.join(temp_dir, 'image.jpeg')
-        load_resources([(TEST_IMAGE_URL, full_path)])
+        download_resources(TEST_IMAGE_URL, temp_dir, [('/image/jpeg', 'image.jpeg')])
         assert os.path.exists(full_path) == True
 
 
@@ -73,7 +73,7 @@ def test_load_bad_resource():
     logging.configure('DEBUG')
     with tempfile.TemporaryDirectory() as temp_dir:
         full_path = os.path.join(temp_dir, 'image.jpeg')
-        load_resources([(INCORRECT_URL, full_path)])
+        download_resources(TEST_IMAGE_URL, temp_dir, [('/noimage/jpeg', 'image.jpeg')])
         assert os.path.exists(full_path) == False
 
     

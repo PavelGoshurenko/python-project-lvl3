@@ -20,18 +20,6 @@ def transform_name(name, ending):
     return re.sub(r'[^0-9a-zA-Z]', '-', name) + ending
 
 
-def make_names(url, path):
-    names = {}
-    names['path'] = "" if path is None else path
-    names['url_components'] = urlparse(url)
-    address = names['url_components'].netloc + names['url_components'].path
-    names['file_name'] = transform_name(address, '.html')
-    names['dir_name'] = transform_name(address, '_files')
-    names['full_file_name'] = os.path.join(names['path'], names['file_name'])
-    names['full_dir_name'] = os.path.join(names['path'], names['dir_name'])
-    return names
-
-
 def create_dir(full_dir_name):
     try:
         os.mkdir(full_dir_name)
@@ -53,11 +41,14 @@ def save_to_file(full_file_name, content, format):
         raise KnownError() from error
 
 
-def load_resources(resources_list):
-    files_count = len(resources_list)
+def download_resources(url, target_dir, resources):
+    files_count = len(resources)
+    url_components = urlparse(url)
     bar = ChargingBar('Loading:', suffix='%(percent)d%%', max=files_count)
-    for resource in resources_list:
-        (resource_full_url, full_resource_name) = resource
+    for resource in resources:
+        (resource_url, resource_file_name) = resource
+        resource_full_url = url_components._replace(path=resource_url).geturl() # noqa E501
+        full_resource_name = os.path.join(target_dir, resource_file_name) # noqa E501
         resource_content = get_content(resource_full_url, OPTIONAL)
         if resource_content:
             save_to_file(full_resource_name, resource_content, BIN)
@@ -65,29 +56,33 @@ def load_resources(resources_list):
     bar.finish()
 
 
-def change_content(file_content, names):
-    soup = BeautifulSoup(file_content, 'html.parser')
-    resources_list = []
+def make_local(content, dir_name):
+    soup = BeautifulSoup(content, 'html.parser')
+    resources = []
     for tag_name, attribute in SOURSE.items():
         tags = soup.find_all([tag_name])
         for tag in tags:
             resource_url = tag.get(attribute)
             if resource_url and resource_url[0] == '/':
-                resource_full_url = names['url_components']._replace(path=resource_url).geturl() # noqa E501
                 (resource_url_root, resource_url_ext) = os.path.splitext(resource_url[1:]) # noqa E501
                 resource_file_name = transform_name(resource_url_root, resource_url_ext) # noqa E501
-                full_resource_name = os.path.join(names['full_dir_name'], resource_file_name) # noqa E501
-                resources_list.append((resource_full_url, full_resource_name))
+                resources.append((resource_url, resource_file_name))
                 # change url to local path
-                tag[attribute] = os.path.join(names['dir_name'], resource_file_name) # noqa E501
-    new_text = soup.prettify()
-    return (new_text, resources_list)
+                tag[attribute] = os.path.join(dir_name, resource_file_name) # noqa E501
+    new_content = soup.prettify()
+    return (new_content, resources)
 
 
 def load_page(url, path):
-    names = make_names(url, path)
-    create_dir(names['full_dir_name'])
+    path = "" if path is None else path
+    url_components = urlparse(url)
+    address = url_components.netloc + url_components.path
+    file_name = transform_name(address, '.html')
+    dir_name = transform_name(address, '_files')
+    full_file_name = os.path.join(path, file_name)
+    full_dir_name = os.path.join(path, dir_name)
+    create_dir(full_dir_name)
     file_content = get_content(url, OBLIGATORY)
-    new_content, resources_list = change_content(file_content, names)
-    save_to_file(names['full_file_name'], new_content, TEXT)
-    load_resources(resources_list)
+    new_content, resources = make_local(file_content, dir_name)
+    save_to_file(full_file_name, new_content, TEXT)
+    download_resources(url, full_dir_name, resources)
